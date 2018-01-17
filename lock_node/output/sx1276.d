@@ -1,0 +1,47 @@
+.\output\sx1276.o: drivers\src\SX1276.C
+.\output\sx1276.o: .\drivers\inc\sx1276.h
+.\output\sx1276.o: .\drivers\inc\spi.h
+.\output\sx1276.o: .\library\cmsis\stm32l0xx.h
+.\output\sx1276.o: .\library\cmsis\stm32l051xx.h
+.\output\sx1276.o: .\library\cmsis\core_cm0plus.h
+.\output\sx1276.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\sx1276.o: .\library\cmsis\core_cmInstr.h
+.\output\sx1276.o: .\library\cmsis\cmsis_armcc.h
+.\output\sx1276.o: .\library\cmsis\core_cmFunc.h
+.\output\sx1276.o: .\library\cmsis\system_stm32l0xx.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal.h
+.\output\sx1276.o: .\user\stm32l0xx_hal_conf.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_rcc.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_def.h
+.\output\sx1276.o: .\library\inc\Legacy/stm32_hal_legacy.h
+.\output\sx1276.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_rcc_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_gpio.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_gpio_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_dma.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_cortex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_comp.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_comp_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_crc.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_crc_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_dac.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_flash.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_flash_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_flash_ramfunc.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_iwdg.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_pwr.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_pwr_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_rtc.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_rtc_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_spi.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_tim.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_tim_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_uart.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_uart_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_usart.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_usart_ex.h
+.\output\sx1276.o: .\library\inc\stm32l0xx_hal_wwdg.h
+.\output\sx1276.o: .\app\inc\GlobalVar.h
+.\output\sx1276.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\string.h
+.\output\sx1276.o: .\drivers\inc\led.h
+.\output\sx1276.o: .\drivers\inc\delay.h
