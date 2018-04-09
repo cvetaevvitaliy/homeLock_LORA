@@ -44,3 +44,4 @@
 .\output\lock.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\string.h
 .\output\lock.o: .\drivers\inc\delay.h
 .\output\lock.o: .\app\inc\globalVar.h
+.\output\lock.o: .\app\inc\schd.h

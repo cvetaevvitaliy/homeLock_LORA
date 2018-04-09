@@ -136,19 +136,18 @@ void PendSV_Handler(void){
 /*void PPP_IRQHandler(void)
 {
 }*/
-/**
-  * @brief  This function handles External lines 4 to 15 interrupt request.
-  * @retval None
-  */
-void EXTI4_15_IRQHandler(void){
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
-}
+
 //finger TouchOUT PA0
 void EXTI0_1_IRQHandler(void){
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
+// USART RX INT.
 void EXTI2_3_IRQHandler(void){
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+}
+//LORA INT.
+void EXTI4_15_IRQHandler(void){
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
 }
 
 /**

@@ -433,6 +433,21 @@
               <FileType>1</FileType>
               <FilePath>.\user\stm32l0xx_it.c</FilePath>
             </File>
+            <File>
+              <FileName>temp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\temp.c</FilePath>
+            </File>
+            <File>
+              <FileName>process.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\process.c</FilePath>
+            </File>
+            <File>
+              <FileName>lora_com.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\lora_com.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -487,6 +502,16 @@
               <FileName>stm32l0xx_hal_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\library\Src\stm32l0xx_hal_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32l0xx_hal_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\library\Src\stm32l0xx_hal_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32l0xx_hal_rtc_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\library\Src\stm32l0xx_hal_rtc_ex.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -547,6 +572,16 @@
               <FileName>lowpower.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\src\lowpower.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc_alarm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\src\rtc_alarm.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32l0xx_hal_rcc_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\library\Src\stm32l0xx_hal_rcc_ex.c</FilePath>
             </File>
           </Files>
         </Group>

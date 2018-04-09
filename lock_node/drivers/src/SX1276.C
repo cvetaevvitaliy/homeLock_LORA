@@ -3,6 +3,7 @@
 #include "GlobalVar.h"
 #include "led.h"
 #include "delay.h"
+#include "lora_com.h"
 /* GPIO相关宏定义 */
 
 #define SPI_CS_PIN 			        GPIO_PIN_0
@@ -17,12 +18,12 @@
 #define LORA_RST_GPIO_PORT 		  GPIOB
 #define LORA_RST_GPIO_CLK 		  RCC_AHBPeriph_GPIOB
 
-#define LORA_TXEN_GPIO_PIN			    GPIO_PIN_1
-#define LORA_TXEN_GPIO_PORT   GPIOB
+#define LORA_TXEN_GPIO_PIN			GPIO_PIN_1
+#define LORA_TXEN_GPIO_PORT   	GPIOB
 #define LORA_TXMODE_GPIO_CLK 		RCC_AHBPeriph_GPIOB
 
-#define LORA_RXEN_GPIO_PIN			    GPIO_PIN_2
-#define LORA_RXEN_GPIO_PORT   GPIOB
+#define LORA_RXEN_GPIO_PIN			GPIO_PIN_2
+#define LORA_RXEN_GPIO_PORT   	GPIOB
 #define LORA_RXMODE_GPIO_CLK 		RCC_AHBPeriph_GPIOB
 
 #define  RF_REST_L			  HAL_GPIO_WritePin(LORA_RST_GPIO_PORT, LORA_RST_PIN, GPIO_PIN_RESET)	     
@@ -41,17 +42,10 @@
 //#define   SPREADINGFACTOR  12       //7-12
 //#define   CODINGRATE       1        //1-4
 #define   POWERVALUE       7
-#define   DATARATE				 4  
-//DATARATE rate
-// 0       0.3kbps,
-// 1       1.2kbps,
-// 2       2.4kbps,
-// 3       4.8kbps,
-// 4       9.6kbps,
-// 5       19.2kbps,
+ 
 const uint8_t  power_data[8] = { 0X80, 0X80, 0X80, 0X83, 0X86, 0x89, 0x8c, 0x8f};
 lpCtrlTypefunc_t lpTypefunc = {0,0,0,0};
-LORA_DATA_STRUCT lora_data;
+
 
 static const uint8_t Freq_Table[][3] = {
     { 0x66, 0x80, 0x00 },          //410,  0
@@ -481,9 +475,9 @@ static void SX1276LORA_INT(void){
    SX1276LoRaSetOpMode(Stdby_mode);  									// 设置为普通模式
    SX1276WriteBuffer( REG_LR_DIOMAPPING1,GPIO_VARE_1);// IO 标志配置 IO 0 1 2 3
    SX1276WriteBuffer( REG_LR_DIOMAPPING2,GPIO_VARE_2); // IO 5	 
-	 SX1276LoRaSetRFFrequency();								        //设置频率 434MHZ 
+	 SX1276LoRaSetRFFrequency();								        //设置频率 433MHZ 
 	 SX1276LoRaSetRFPower(POWERVALUE);					        // 设置功率  
-	 SX1276_LoRa_SetDataRate(DATARATE);   
+	 SX1276_LoRa_SetDataRate(DATARATETYPE);   
 //   SX1276LoRaSetSpreadingFactor(SPREADINGFACTOR);	    // 扩频因子设置
 //   SX1276LoRaSetErrorCoding(CODINGRATE);		          //有效数据比
 //   SX1276LoRaSetSignalBandwidth( BW_FREQUENCY );	    //设置扩频带宽 
@@ -565,49 +559,6 @@ void RF_SLEEP(void){
    SX1276LoRaSetOpMode( Sleep_mode );
 }
 
-/*************************************************************
-  Function   ：Lora_Send  
-  Description：发送一定长度的数据
-  Input      : p_send_buf -待发送数据buffer  len --待发送数据长度
-  return     : none    
-*************************************************************/
-static uint8_t lora_tx_with_timeout(uint8_t* data, uint16_t len, uint32_t timeOut){
-		lora_data.lora_send_flag = 0;
-		lora_data.lora_send_tickTime = local_ticktime();
-		FUN_RF_SENDPACKET(data, len);
-		while(lora_data.lora_send_flag == 0){
-			if(timeout(lora_data.lora_send_tickTime, timeOut)){
-				return 1;
-			}
-		}
-		return 0;
-}
-#define LORA_MAX_TX_NUM 255
-uint8_t Lora_Send(uint8_t *p_send_buf, uint16_t len){
-	uint8_t pkt_num = 0, pkt_remain = 0;
-	uint8_t* p = p_send_buf;
-	uint8_t j = 0;
-	HAL_NVIC_DisableIRQ((IRQn_Type)EXTI0_1_IRQn);
-	if(len <= LORA_MAX_TX_NUM){
-		if(lora_tx_with_timeout(p, len, LORA_SEND_MAX_TIMEOUT))
-				return 1;
-	}	else{
-		pkt_num = len/LORA_MAX_TX_NUM;
-		pkt_remain = len%LORA_MAX_TX_NUM;
-		
-		for(j = 0; j < pkt_num; j++){
-			if(lora_tx_with_timeout(p, LORA_MAX_TX_NUM, LORA_SEND_MAX_TIMEOUT))
-				return 1;
-			p += LORA_MAX_TX_NUM;
-		}
-		Delay_nms(200);
-		if(lora_tx_with_timeout(p, pkt_remain, LORA_SEND_MAX_TIMEOUT))
-			return 1;	
-		Delay_nms(400);
-	}
-	return 0;
-}
-
 __weak void SX1276_InitSuccess(void){
 	//todo
 }
@@ -668,7 +619,7 @@ void SX1278_Interupt(void){
     }       
     RF_RECEIVE();
   }else if((RF_EX0_STATUS&0x08) == 0x08){											// TX Done
-    lora_data.lora_send_flag = 1;LED_TOGGLE(LED_NO_0);
+    set_tx_done_flag();
 		RF_RECEIVE();
   }else if((RF_EX0_STATUS&0x04) == 0x04){  										// CAD Done
     if((RF_EX0_STATUS&0x01)==0x01){     //表示CAD 检测到扩频信号 模块进入了接收状态来接收数据

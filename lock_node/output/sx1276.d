@@ -45,3 +45,4 @@
 .\output\sx1276.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\string.h
 .\output\sx1276.o: .\drivers\inc\led.h
 .\output\sx1276.o: .\drivers\inc\delay.h
+.\output\sx1276.o: .\user\lora_com.h

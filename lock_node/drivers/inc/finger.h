@@ -5,31 +5,37 @@
 #include "stm32l0xx_hal.h"
 #include "GlobalVar.h"
 
-#define CHARACTER_BUF_SIZE 		150
-#define MAX_FINGER_BUFFERSIZE 780
+#define FINGER_MAX_CMD_RETYR_TIMES  3
 
-#define FINGER_BUF_1_ID 0x01
-#define FINGER_BUF_2_ID 0x02
+#define CHARACTER_BUF_SIZE 				150
+#define MAX_FINGER_BUFFERSIZE 		780
+
+#define FINGER_BUF_1_ID 					0x01
+#define FINGER_BUF_2_ID 					0x02
 
 #define FINGER_LIB_START_POSITION 0x0000
-#define SEARCH_PAGES_NUM 					150
+#define MAX_FINGER_LIB_NUM 					150
 
-#define PACKET_HEADER 0xEF01
-#define FINGER_ADDR		0xFFFFFFFF
+#define PACKET_HEADER 						0xEF01
+
+#define FINGER_COM_ACK_TIME         200
+#define FIGNER_COM_DATA_TIME        400			//57600 baudrate, 指纹数据128*12字节，大约300ms
 
 typedef struct {
 	uint8_t up_download_fingerModelBuff[MAX_FINGER_BUFFERSIZE];
 	uint16_t buf_size;
 	uint8_t receive_data_flag;
+	uint8_t frame_num;
 }UPDOWNLOADBUF;
 
 enum FINGER_FSM{
 	FSM_IDLE,
-	REGISTER_LOCAL, //采集两次，并将模板存在本地
-	REGISTER_UPPER,//采集两次，将模板上传到上位机
-	MATCH_LOCAL,	 //采集一次，本地库中比对
-	REGISTER_DOWN,  //将指纹模块下传到指模库
-	DELETE_CHAR
+//	REGISTER_LOCAL, 		//采集两次，并将模板存在本地
+//	REGISTER_UPPER,			//采集两次，将模板上传到上位机
+	MATCH_LOCAL_FSM,	   //采集一次，本地库中比对
+	REGISTER_DOWN_FSM,   //将指纹模块下传到指模库
+	DELETE_CHAR_FSM,		 //删除指定位置指纹信息
+	EMPTY_LIB_FSM				 //清空指纹库
 };
 
 enum Finger_Register{
@@ -102,7 +108,7 @@ typedef struct {
 	uint32_t response_ack_tickTime;
 }FINGER_COMMUNICATION;
 
-
+extern UPDOWNLOADBUF up_download_finger;
 extern FINGER_PARA finger;
 extern FINGER_FSM_STRUCT finger_fsm;
 extern FINGER_COMMUNICATION finger_com;
@@ -134,5 +140,7 @@ void finger_processCMD(void);
 void finger_processACK(void);
 void finger_processEND(void);
 void finger_processDATA(void);
+
+
 
 #endif

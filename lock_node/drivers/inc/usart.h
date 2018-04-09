@@ -60,7 +60,8 @@ typedef struct{
 /* exported variables --------------------------------------------------------*/
 extern  uint8_t UART2_RxBuffer[UART2_RxBufferSize];
 extern  uint8_t UART1_RxBuffer[UART1_RxBufferSize];
-
+extern UART_HandleTypeDef UartHandle1, UartHandle2;
+extern Rx_para usart1_rx_flag, usart2_rx_flag;
 /* Exported macro ------------------------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Exported functions --------------------------------------------------------*/

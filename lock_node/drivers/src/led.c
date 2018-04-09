@@ -3,10 +3,10 @@
 
 struct LedDefine _leds_defines[LED_MAX_SIZE]; 
 
-static uint8_t LED_Configuration(const struct LedDefine* leds, uint8_t len)
-{
+static uint8_t LED_Configuration(const struct LedDefine* leds, uint8_t len){
     uint8_t l;
     GPIO_InitTypeDef	GPIO_InitStructure;
+	
 		if(len > LED_MAX_SIZE) 
 			return 1;
     memset( (void*)&_leds_defines[0], 0, sizeof(_leds_defines) );
@@ -36,15 +36,13 @@ static uint8_t LED_Configuration(const struct LedDefine* leds, uint8_t len)
     }
     return 0;
 }
+
 void init_led(void){
 	struct LedDefine conf[] = {
-		LED_NO_0,
-		GPIOB,
-		GPIO_PIN_7,
-		LEDOFF
+		{LED_NO_0,	GPIOB, GPIO_PIN_6, LEDOFF},
+		{LED_NO_1,	GPIOB, GPIO_PIN_7, LEDOFF}
 	};
 	LED_Configuration(conf, sizeof(conf)/sizeof(struct LedDefine));
-	
 }
 
 uint8_t LED_ON(enum LED_NO led_no){
@@ -70,6 +68,3 @@ uint8_t LED_TOGGLE(enum LED_NO led_no){
     }
     return 1;
 }
-
-
-

@@ -39,14 +39,20 @@
 .\output\main.o: .\library\inc\stm32l0xx_hal_usart.h
 .\output\main.o: .\library\inc\stm32l0xx_hal_usart_ex.h
 .\output\main.o: .\library\inc\stm32l0xx_hal_wwdg.h
+.\output\main.o: user\main.h
+.\output\main.o: .\app\inc\GlobalVar.h
 .\output\main.o: .\drivers\inc\led.h
 .\output\main.o: .\drivers\inc\spi.h
 .\output\main.o: .\drivers\inc\lowpower.h
 .\output\main.o: .\drivers\inc\sx1276.h
-.\output\main.o: .\app\inc\GlobalVar.h
 .\output\main.o: .\drivers\inc\usart.h
 .\output\main.o: .\drivers\inc\finger.h
 .\output\main.o: user\lock.h
 .\output\main.o: .\app\inc\schd.h
 .\output\main.o: .\drivers\inc\delay.h
 .\output\main.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\string.h
+.\output\main.o: user\temp.h
+.\output\main.o: user\process.h
+.\output\main.o: user\lora_com.h
+.\output\main.o: D:\Developer tools\mdk5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\output\main.o: .\drivers\inc\rtc_alarm.h
