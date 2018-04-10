@@ -161,7 +161,9 @@ void finger_callBack(enum FINGER_FSM fsm, uint8_t* data){
 			}else{
 				send_buf[1] = 1;
 			}
-			sendToServer(send_buf, 2, UPDATE_CONTENT_CMD , 1);			
+			if(user_mag.opType != SET_MANUFACTURE_CMD){
+				sendToServer(send_buf, 2, UPDATE_CONTENT_CMD , 1);			
+			}
 			break;
 		default:
 			break;
@@ -322,6 +324,7 @@ void next_op(union SchdParameter value){
 			sendToServer(send_buf, 1, UPDATE_TIME_CMD, 1);
 			break;
 		case 5:
+			enable_doorBell();
 			break;
 		case 6:
 			sys_para.sys_fsm = SLEEP_MODE;
@@ -377,8 +380,7 @@ void process_lockUnitRxBuffer(void){
 				switch(temp_rx_data[frame_start_position+5]){
 					case LOCK_POWER_ON:  //power on 						
 						send_cmd_to_lock(LOCK_CMD_ACK, send_buf, 0 );
-						send_buf[0] = UPDATE_TIME_REQ;
-						sendToServer(send_buf, 1, UPDATE_TIME_CMD, 1);												
+						Schd_After_Int(20, next_op, 5);																								
 						break;
 					case LOCK_DOOR_BELL: // door bell
 						bell_update = 1;
@@ -502,9 +504,25 @@ void process_lockUnitRxBuffer(void){
 					sendToServer(send_buf, 2, UPDATE_CONTENT_CMD , 0);					
 					break;
 				case LOCK_CMD_INIT:
+					send_buf[0] = SET_MANUFACTURE_CMD;
+					if(temp_rx_data[frame_start_position + 4] == 0){						
+						send_buf[1] = 0;						
+						enable_doorBell();		
+					}else{
+						send_buf[1] = 1;
+					}		
+					sendToServer(send_buf, 2, UPDATE_CONTENT_CMD , 1);					
 					break;
-				case LOCK_CMD_VOICE_BROADCAST:
-					break;			
+				case LOCK_CMD_VOICE_BROADCAST://”Ô“Ù≤•±®
+					break;	
+				case LOCK_CMD_REGISTER://√≈À¯◊¢≤·
+					if(user_mag.opType == SET_MANUFACTURE_CMD){
+						sys_para.sys_fsm = SLEEP_MODE;
+					}else{
+						send_buf[0] = UPDATE_TIME_REQ;
+						sendToServer(send_buf, 1, UPDATE_TIME_CMD, 1);
+					}
+					break;				
 				default: 					
 					break;
 			}
@@ -514,7 +532,7 @@ void process_lockUnitRxBuffer(void){
 		}
 	}
 	lock_com.cmd_type = LOCK_CMD_IDLE;
-	memset(UART2_RxBuffer, 0, UART2_RxBufferSize);
+	memset(UART2_RxBuffer, 0, temp_rx_data_len);
 	HAL_UART_Receive_IT(&UartHandle2, (uint8_t*)UART2_RxBuffer, UART2_RxBufferSize);
 }
 
@@ -664,7 +682,12 @@ void process_serverRxBuffer(void){
 //									send_cmd_to_lock(LOCK_CMD_VOICE_BROADCAST, temp_data, 1);
 								}
 								bell_update = 0;
-								Schd_After_Int(500, next_op, 6);						
+								Schd_After_Int(500, next_op, 6);
+//								if(user_mag.opType != SET_MANUFACTURE_CMD){
+//									Schd_After_Int(500, next_op, 6);
+//								}else{
+//									update_sysIdle_tick();
+//								}									
 							}
 							break;
 						default:

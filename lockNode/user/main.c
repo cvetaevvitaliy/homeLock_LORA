@@ -190,14 +190,15 @@ void sys_fsm(void){
 			sysIdle_timeout();			
 			break;
 		case SLEEP_MODE:
-			//enter_sleep();
+			enter_sleep();
 			break;
 		default: 
 			break;
 	}
 }
 //RTC的Alarm时间设定在24 Hours的2点到4点之间的时段更新
-int main (){	
+int main (){
+	
 	uint16_t temp;
 	initDrivers();
 	init_RTC();
@@ -209,7 +210,6 @@ int main (){
 	// wait lock startUp
 	Delay_nms(4000);
 	update_sysIdle_tick();
-	enable_doorBell();
 	
 	while(1){
 		flash_running_led();

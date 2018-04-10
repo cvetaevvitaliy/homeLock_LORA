@@ -8,7 +8,7 @@
 #define LED_RUNNING_PERIOD			3000
 #define SYS_IDLE_TIME						10000
 #define FINGER_UART_RX_TIMEOUT  20
-#define LOCK_UART_RX_TIMEOUT		40
+#define LOCK_UART_RX_TIMEOUT		50
 #define LOCK_ACK_TIME						500  //发送的时候有110的唤醒，然后是数据发送
 #define FINGER_NO_TOUCH_TIME		500
 

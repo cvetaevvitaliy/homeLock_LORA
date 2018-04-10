@@ -1,6 +1,6 @@
 Dependencies for Project 'locknode', Target 'locknode': (DO NOT MODIFY !)
 F (.\library\CMSIS\startup_stm32l051xx.s)(0x5AAB8A94)(--cpu Cortex-M0+ -g --16 --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 514" --pd "STM32L051xx SETA 1"--list .\output\startup_stm32l051xx.lst --xref -o .\output\startup_stm32l051xx.o --depend .\output\startup_stm32l051xx.d)
-F (.\user\main.c)(0x5ACB2AEA)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (.\user\main.c)(0x5ACC8FE7)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (.\library\cmsis\stm32l0xx.h)(0x59B28956)
 I (.\library\cmsis\stm32l051xx.h)(0x59B28955)
 I (.\library\cmsis\core_cm0plus.h)(0x575AD189)
@@ -33,7 +33,7 @@ I (.\library\inc\stm32l0xx_hal_uart.h)(0x5A27F18B)
 I (.\library\inc\stm32l0xx_hal_uart_ex.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart_ex.h)(0x59B28956)
-I (user\main.h)(0x5ACB2B3D)
+I (user\main.h)(0x5ACC563A)
 I (.\app\inc\GlobalVar.h)(0x5A274AC5)
 I (.\drivers\inc\led.h)(0x5A0E80C5)
 I (.\drivers\inc\spi.h)(0x5A0C4011)
@@ -131,7 +131,7 @@ I (.\app\inc\GlobalVar.h)(0x5A274AC5)
 I (user\process.h)(0x5AC3537D)
 I (.\drivers\inc\finger.h)(0x5AB074F1)
 I (user\lock.h)(0x5AB8A05F)
-F (.\user\process.c)(0x5ACB372D)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\process.o --omf_browse .\output\process.crf --depend .\output\process.d)
+F (.\user\process.c)(0x5ACC7543)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\process.o --omf_browse .\output\process.crf --depend .\output\process.d)
 I (user\process.h)(0x5AC3537D)
 I (.\library\cmsis\stm32l0xx.h)(0x59B28956)
 I (.\library\cmsis\stm32l051xx.h)(0x59B28955)
@@ -170,7 +170,7 @@ I (.\app\inc\GlobalVar.h)(0x5A274AC5)
 I (D:\Developer tools\mdk5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (.\drivers\inc\usart.h)(0x5AA224E2)
 I (user\lock.h)(0x5AB8A05F)
-I (user\main.h)(0x5ACB2B3D)
+I (user\main.h)(0x5ACC563A)
 I (.\app\inc\schd.h)(0x57C69960)
 I (.\drivers\inc\sx1276.h)(0x5AA731E6)
 I (.\drivers\inc\spi.h)(0x5A0C4011)
@@ -191,7 +191,7 @@ I (.\library\cmsis\cmsis_armcc.h)(0x59B0FFE1)
 I (.\library\cmsis\core_cmFunc.h)(0x575AD189)
 I (.\library\cmsis\system_stm32l0xx.h)(0x59B28956)
 I (D:\Developer tools\mdk5\ARM\ARMCC\include\string.h)(0x5475F300)
-I (user\main.h)(0x5ACB2B3D)
+I (user\main.h)(0x5ACC563A)
 I (.\library\inc\stm32l0xx_hal.h)(0x59B28956)
 I (.\user\stm32l0xx_hal_conf.h)(0x5ACB05B0)
 I (.\library\inc\stm32l0xx_hal_rcc.h)(0x59B28956)
@@ -655,7 +655,7 @@ I (.\library\inc\stm32l0xx_hal_uart.h)(0x5A27F18B)
 I (.\library\inc\stm32l0xx_hal_uart_ex.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart_ex.h)(0x59B28956)
-F (.\drivers\src\finger.c)(0x5ACACE38)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\finger.o --omf_browse .\output\finger.crf --depend .\output\finger.d)
+F (.\drivers\src\finger.c)(0x5ACC7554)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I.\app\inc -I.\drivers\inc -I.\library\inc -I.\library\cmsis -I.\user-I E:\Colander\officeLock\code\HomeLock\lockNode\RTE-I "D:\Developer tools\mdk5\ARM\PACK\Keil\STM32L0xx_DFP\1.6.1"-I "D:\Developer tools\mdk5\ARM\CMSIS\Include"-D__UVISION_VERSION="514" -DSTM32L051xx -DSTM32L051xx -DUSE_STM32L0XX_NUCLEO-o .\output\finger.o --omf_browse .\output\finger.crf --depend .\output\finger.d)
 I (.\drivers\inc\finger.h)(0x5AB074F1)
 I (.\library\cmsis\stm32l0xx.h)(0x59B28956)
 I (.\library\cmsis\stm32l051xx.h)(0x59B28955)
@@ -954,7 +954,7 @@ I (.\library\inc\stm32l0xx_hal_uart.h)(0x5A27F18B)
 I (.\library\inc\stm32l0xx_hal_uart_ex.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart.h)(0x59B28956)
 I (.\library\inc\stm32l0xx_hal_usart_ex.h)(0x59B28956)
-I (.\user\main.h)(0x5ACB2B3D)
+I (.\user\main.h)(0x5ACC563A)
 I (.\app\inc\GlobalVar.h)(0x5A274AC5)
 I (.\user\process.h)(0x5AC3537D)
 I (.\drivers\inc\finger.h)(0x5AB074F1)
