@@ -506,8 +506,8 @@ void process_lockUnitRxBuffer(void){
 				case LOCK_CMD_INIT:
 					send_buf[0] = SET_MANUFACTURE_CMD;
 					if(temp_rx_data[frame_start_position + 4] == 0){						
-						send_buf[1] = 0;						
-						enable_doorBell();		
+						send_buf[1] = 0;	
+						Schd_After_Int(20, next_op, 5);							
 					}else{
 						send_buf[1] = 1;
 					}		
@@ -681,13 +681,12 @@ void process_serverRxBuffer(void){
 //									temp_data[0] = S_SET_SUCCEED;
 //									send_cmd_to_lock(LOCK_CMD_VOICE_BROADCAST, temp_data, 1);
 								}
-								bell_update = 0;
-								Schd_After_Int(500, next_op, 6);
-//								if(user_mag.opType != SET_MANUFACTURE_CMD){
-//									Schd_After_Int(500, next_op, 6);
-//								}else{
-//									update_sysIdle_tick();
-//								}									
+								bell_update = 0;															
+								if(user_mag.opType != SET_MANUFACTURE_CMD){
+									Schd_After_Int(100, next_op, 6);
+								}else{
+									update_sysIdle_tick();
+								}									
 							}
 							break;
 						default:

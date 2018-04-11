@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\locknode.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\locknode.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Tue Apr 10 18:20:26 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Apr 11 11:39:17 2018
 <BR><P>
 <H3>Maximum Stack Usage =        920 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1293,7 +1293,6 @@ Global Symbols
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;next_op
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_lockUnitRxBuffer
 </UL>
 
 <P><STRONG><a name="[ac]"></a>enter_StopMode</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, lowpower.o(i.enter_StopMode))
@@ -1629,14 +1628,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[de]"></a>process_lockUnitRxBuffer</STRONG> (Thumb, 954 bytes, Stack size 96 bytes, process.o(i.process_lockUnitRxBuffer))
+<P><STRONG><a name="[de]"></a>process_lockUnitRxBuffer</STRONG> (Thumb, 960 bytes, Stack size 96 bytes, process.o(i.process_lockUnitRxBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 448<LI>Call Chain = process_lockUnitRxBuffer &rArr; sendToServer &rArr; copy_data_to_lora_txBuf &rArr; write_datas_to_txBuf &rArr; __aeabi_memcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Schd_After_Int
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lock_rx_check
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRecord
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_doorBell
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_cmd_to_lock
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_lock_com
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_sysIdle_tick
@@ -1648,7 +1646,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d3]"></a>process_serverRxBuffer</STRONG> (Thumb, 284 bytes, Stack size 8 bytes, process.o(i.process_serverRxBuffer))
+<P><STRONG><a name="[d3]"></a>process_serverRxBuffer</STRONG> (Thumb, 298 bytes, Stack size 8 bytes, process.o(i.process_serverRxBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = process_serverRxBuffer &rArr; serverUpdateNode &rArr; sendToServer &rArr; copy_data_to_lora_txBuf &rArr; write_datas_to_txBuf &rArr; __aeabi_memcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_ack_flag
